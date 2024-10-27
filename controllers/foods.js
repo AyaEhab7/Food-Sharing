@@ -17,10 +17,19 @@ router.get('/', async (req, res) => {
       res.redirect('/');
     }
 });
+
+http://localhost:3000/foods/new
 // New route: Render form to create a new foods item
 router.get('/new', (req, res) => {
     res.render('foods/new.ejs');
 });
+
+// Create route: Handle form submission to create a new food item
+router.post('/', async (req, res) => {
+    req.body.user_id = req.session.user._id; // Set the user ID from session
+    await foods.create(req.body);
+    res.redirect('/foods'); // Redirect to the food index
+  });
 
 
 module.exports = router;

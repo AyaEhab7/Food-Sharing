@@ -6,8 +6,7 @@ Food Sharing App
 ## Link The App :
 
 ## Getting started: 
-The Food Sharing App connects users to share surplus food items, 
-helping to reduce food waste by facilitating quick and easy sharing of items before they expire. The app promotes community engagement and trust among users through a rating and comment system.
+The Food Sharing App connects users who want to share surplus food items with those in need. Our mission is to reduce food waste while fostering community spirit. Whether you have extra groceries or you're looking for something to enjoy, this app makes it easy to share and find food before it expires. Join us in making a difference, one meal at a time!
 ## Attributions: 
 
 ## Technologies used: 

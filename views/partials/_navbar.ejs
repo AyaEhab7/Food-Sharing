@@ -1,7 +1,8 @@
 <nav>
     <% if(user) { %>
+        <a href="/">Home</a>
         <a href="/users/profile">Profile</a>
-        <a href="/listings">View all Foods sharing</a>
+        <a href="/foods">View all Foods sharing</a>
         <a href="/auth/sign-out">Sign Out</a>
     <% } else { %>
         <a href="/auth/sign-up">Sign Up</a>
