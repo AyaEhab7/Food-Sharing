@@ -1,0 +1,169 @@
+Game Idea:
+•	Food Sharing App
+
+Project Description: 
+
+    The Food Sharing App connects users to share surplus food items, 
+    helping to reduce food waste by facilitating quick and easy sharing of items before they expire. 
+    The app promotes community engagement and trust among users through a rating and comment system.
+
+User stories:
+    As a new user, I want to create an account on the Food Sharing app so that I can manage my shared food items.
+    As a registered user, I want to log in to Food Sharing to access my account and shared items.
+    As a user, I want to create a new food sharing entry to share surplus food with others.
+    As a user, I want to view a list of active food shares to see what’s available to pick up.
+    As a user, I want to edit my food sharing entry to update details like expiration date or location.
+    As a user, I want to delete my food sharing entry if I no longer have the item available.
+    As a user, I want to filter food shares by expiration date or item name.
+    As a user, I want to view my profile to track my past shared items and ratings.
+    As a user, I want to rate food items and leave a comment to share my experience.
+    As a user, I want to edit or delete my rating and comment if my opinion changes.
+
+Data Entities:
+User
+•	user_id (Primary Key, Integer): Unique identifier for the user.
+•	username (String): Unique username for the user.
+•	password_hash (String): Hashed password for authentication.
+
+Food Item
+•	food_item_id (Primary Key, Integer): Unique identifier for the food item.
+•	name (String): Name of the food item.
+•	expiration_date (Datetime): Date and time when the food item expires.
+•	location (String): Pickup location for the food item.
+•	description (String): Additional details (quantity, condition) about the food item.
+•	user_id (Foreign Key, Integer): Reference to the user sharing the item.
+Review
+•	review_id (Primary Key, Integer): Unique identifier for the review.
+•	user_id (Foreign Key, Integer): Reference to the user who made the review.
+•	food_item_id (Foreign Key, Integer): Reference to the food item being reviewed.
+•	rating (Integer): Rating score (1-5 stars).
+•	comment (String): Text comment providing feedback about the food item.
+
+
+Pseudo code:
+// User Model
+User Model
+ Define a user with:
+•	    - user_id (Unique Identifier)
+•	    - username (String)
+•	    - password_hash (String)
+
+// Food Item Model
+Food Item Model
+ Define a food item with:
+•	    - food_item_id (Unique Identifier)
+•	    - name (String)
+•	    - expiration_date (Datetime)
+•	    - location (String)
+•	    - description (String)
+•	    - user_id (Foreign Key)
+
+// Review Model
+Review Model
+ Define a review with:
+•	    - review_id (Unique Identifier)
+•	    - user_id (Foreign Key)
+•	    - food_item_id (Foreign Key)
+•	    - rating (Integer, 1-5)
+•	    - comment (String)
+
+// User Registration
+User Registration
+•	 Show registration form
+•	 Validate user input
+    • If valid:
+        - Hash the password
+        - Create a new User entry
+        - Save to the database
+        - Redirect to login page
+    • If invalid:
+        - Show error messages
+
+// User Login
+User Login
+ Show login form
+ Validate entered credentials
+    • If valid:
+        - Create user session
+        - Redirect to home page
+    • If invalid:
+        - Show error message
+
+// Create Food Sharing Entry
+Create Food Sharing Entry
+• Show form to create a new food item
+• Validate input
+    • If valid:
+                - Create a new Food Item entry
+        - Save to the database
+        - Redirect to home page
+ • If invalid:
+        - Show error messages
+
+// Edit Food Sharing Entry
+Edit Food Sharing Entry
+• Check if user is authenticated
+• Retrieve food item by food_item_id
+• Show form pre-filled with current details
+• Validate updated input
+    • If valid:
+        - Update FoodItem in the database
+        - Redirect to home page
+    • If invalid:
+        - Show error messages
+
+// Delete Food Sharing Entry
+Delete Food Sharing Entry
+• Check if user is authenticated
+• Remove FoodItem from the database
+• Redirect to home page
+
+// View Active Food Shares
+View Active Food Shares
+• Retrieve list of active food items
+• Display food items with filtering options (by expiration date or name)
+
+// Rating and Comment System
+Create Review
+• Show form to submit rating and comment
+• Validate rating and comment input
+    • If valid:
+       - Create a new Review entry
+        - Save to the database
+        - Redirect to food item page
+    • If invalid:
+        - Show error message
+
+Edit Review
+• Check if user is authenticated
+• Retrieve existing review by review_id
+• Show form pre-filled with current review details
+• Validate updated input
+    • If valid:
+        - Update Review in the database
+        - Redirect to food item page
+    • If invalid:
+        - Show error messages
+
+Delete Review
+        • Check if user is authenticated
+• Remove Review from the database
+• Redirect to food item page
+
+Display Reviews
+ When a food item is viewed:
+    - Retrieve all reviews for the food item
+    - Calculate average rating
+    - Display average rating and list of comments
+
+// Middleware
+Middleware
+• Implement authentication checks
+    • If user is logged in, allow access
+    • If not, redirect to login page
+• Handle errors
+    • Log errors and display error messages to the user
+
+// Server Initialization
+Server Initialization
+• Start the server and listen for incoming requests.
