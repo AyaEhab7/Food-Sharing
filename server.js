@@ -9,6 +9,8 @@ require('./config/database');
 
 // Controllers
 const authController = require('./controllers/auth');
+const foodController = require('./controllers/foods');
+
 const isSignedIn = require('./middleware/isSignedIn');
 
 const app = express();
@@ -37,11 +39,15 @@ app.use(
 app.use(addUserToViews);
 
 // Public Routes
-app.get('/', async (req, res) => {
-  res.render('index.ejs');
-});
+app.get('/', (req, res) => {
+  res.render('index.ejs', {
+    user: req.session.user,
+  })
+})
 
 app.use('/auth', authController);
+app.use('/food', foodController);
+
 
 // Protected Routes
 app.use(isSignedIn);

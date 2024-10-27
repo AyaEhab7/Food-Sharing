@@ -26,7 +26,6 @@ User
 •	password_hash (String): Hashed password for authentication.
 
 Food Item
-•	food_item_id (Primary Key, Integer): Unique identifier for the food item.
 •	name (String): Name of the food item.
 •	expiration_date (Datetime): Date and time when the food item expires.
 •	location (String): Pickup location for the food item.
