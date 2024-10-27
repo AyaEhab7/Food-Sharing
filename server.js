@@ -46,7 +46,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/auth', authController);
-app.use('/food', foodController);
+app.use('/foods', foodController);
 
 
 // Protected Routes

@@ -1,13 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-const food = require('../models/foods');
+const foods = require('../models/foods');
 
-// Index route: Get all food items
+//http://localhost:3000/foods
+// Index route: Get all foods items
 router.get('/', async (req, res) => {
     try {
-      const foodItems = await food.find({}).populate('user_id', 'username'); // Populate the user info
-      console.log('Food Items:', foodItems);
+      const foodItems = await foods.find({}).populate('user_id', 'username'); // Populate the user info
+      console.log('Foods Items:', foodItems);
       res.render('foods/index.ejs', {
         foodItems,
       });
@@ -15,6 +16,10 @@ router.get('/', async (req, res) => {
       console.error(error);
       res.redirect('/');
     }
+});
+// New route: Render form to create a new foods item
+router.get('/new', (req, res) => {
+    res.render('foods/new.ejs');
 });
 
 
