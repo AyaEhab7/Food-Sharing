@@ -14,8 +14,14 @@
     <p><strong>Expiration Date:</strong> <%= new Date(foodItem.expiration_date).toLocaleDateString() %></p>
     <p><strong>Pickup Location:</strong> <%= foodItem.location %></p>
     <p><strong>Description:</strong> <%= foodItem.description %></p>
-    <p><strong>Shared By:</strong> <%= foodItem.user_id.username %></p> <!-- Assuming user_id is populated -->
+    <p><strong>Shared By:</strong> <%= foodItem.user_id.username %></p>
 
+        <!-- Display average rating -->
+        <p><strong>Average Rating:</strong> 
+            <%= foodItem.ratings.length > 0 
+                ? (foodItem.ratings.reduce((acc, r) => acc + r.rating, 0) / foodItem.ratings.length).toFixed(1) 
+                : 'No ratings yet' %>
+        </p>
 
     <a href="/foods">Back to Food List</a>
 </body>

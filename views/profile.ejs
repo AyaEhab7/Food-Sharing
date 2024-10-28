@@ -8,11 +8,11 @@
 <body>
     <%- include('./partials/_navbar.ejs') %>
     <h1><%= user.username %></h1>
-    <a href="/foods/new">Add a New Food</a>
+    <a href="/foods/new">Add a New Food</a> 
     <ul>
       <% foodItems.forEach(foodItem => { %>
-          <% if (user && foodItem.user_id && foodItem.user_id._id.equals(user._id)) { %>
-              <li>
+          <% if (user && foodItem.user_id && foodItem.user_id._id.equals(user._id)) { %> 
+            <li>
                   <h2><%= foodItem.name %></h2>
                   <p><strong>Expiration Date:</strong> <%= new Date(foodItem.expiration_date).toLocaleDateString() %></p>
                   <p><strong>Pickup Location:</strong> <%= foodItem.location %></p>
@@ -23,12 +23,12 @@
                   <form action="/foods/<%= foodItem._id %>/edit" method="GET" style="display:inline;">
                       <button type="submit">Edit</button>
                   </form>
+                  <form action="/foods/<%= foodItem._id %>" method="GET" style="display:inline;">
+                    <button type="submit">see the rating</button>
+                </form>                  
               </li>
           <% } %>
       <% }) %>
     </ul>
-    <% if (foodItems.length === 0) { %>
-        <p>No food items available. Please add some!</p>
-    <% } %>
 </body>
 </html>

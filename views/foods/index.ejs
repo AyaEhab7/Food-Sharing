@@ -1,39 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>All Foods sharing</title>
-  </head>
-  <body>
+    <title>All Foods Sharing</title>
+</head>
+<body>
     <%- include('../partials/_navbar.ejs') %>
     <h1>Here's all the Foods Sharing</h1>
-    <a href="/foods/new">Add a New Foods</a>
+    <a href="/foods/new">Add a New Food</a>
     <ul>
-      <% foodItems.forEach(foodItem => { %>
-          <li>
-              <h2><%= foodItem.name %></h2>
-              <p><strong>Expiration Date:</strong> <%= new Date(foodItem.expiration_date).toLocaleDateString() %></p>
-              <p><strong>Pickup Location:</strong> <%= foodItem.location %></p>
-              <p><strong>Description:</strong> <%= foodItem.description %></p>
-              <!-- User ID Check -->
-              <% if (user && foodItem.user_id._id.equals(user._id)) { %>
-                  <p><strong>You Shared this!</strong></p>
-                  <form action="/foods/<%= foodItem._id %>?_method=DELETE" method="POST" style="display:inline;">
-                    <button type="submit">Delete</button>
-                  </form> 
-                  <form action="/foods/<%= foodItem._id %>/edit" method="GET" style="display:inline;">
-                    <button type="submit">Edit</button> 
-                  </form> 
-                    <% } else { %>
-                  <p><strong>Shared By:</strong><%= foodItem.user_id.username %> </p>                          
-              <% } %>
-          
+        <% foodItems.forEach(foodItem => { %>
+        <li>
+          <h2><%= foodItem.name %></h2>
+          <p><strong>Expiration Date:</strong> <%= new Date(foodItem.expiration_date).toLocaleDateString() %></p>
+          <p><strong>Pickup Location:</strong> <%= foodItem.location %></p>
+          <p><strong>Description:</strong> <%= foodItem.description %></p>
+                <!-- User ID Check -->
+                  <% if (user && foodItem.user_id._id.equals(user._id)) { %>
+                    <p><strong>You Shared this!</strong></p>
+                    <form action="/foods/<%= foodItem._id %>?_method=DELETE" method="POST" style="display:inline;">
+                        <button type="submit">Delete</button>
+                    </form>
+                    <form action="/foods/<%= foodItem._id %>/edit" method="GET" style="display:inline;">
+                        <button type="submit">Edit</button>
+                    </form>    
+                  <% } else { %>
+                    <p><strong>Shared By:</strong> <%= foodItem.user_id.username %></p>
+                
+                    <!-- Form to submit rating -->
+                  <form action="/foods/<%= foodItem._id %>/rate" method="POST">
+                    <label for="rating">Rate this food item:</label>
+                   <select name="rating" id="rating" required>
+                       <option value="">Select a rating</option>
+                       <option value="1">1</option>
+                       <option value="2">2</option>
+                       <option value="3">3</option>
+                       <option value="4">4</option>
+                       <option value="5">5</option>
+                       </select>
+                    <button type="submit">Submit Rating</button>
+                    </form>                
+                <% } %>
+                <form action="/foods/<%= foodItem._id %>" method="GET" style="display:inline;">
+                  <button type="submit">see the rating</button>
+              </form>
             </li>
-      <% }) %>
-  </ul>
-  <% if (foodItems.length === 0) { %>
-      <p>No food items available. Please add some!</p>
-  <% } %>
-  </body>
+        <% }) %>
+    </ul>
+    <% if (foodItems.length === 0) { %>
+        <p>No food items available. Please add some!</p>
+    <% } %>
+</body>
 </html>

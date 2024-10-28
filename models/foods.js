@@ -24,6 +24,19 @@ const foodSchema = new mongoose.Schema({
     ref: 'User', // Reference to the User model
   
   },
+  ratings: [
+    {
+      user_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+      },
+      rating: {
+        type: Number,
+        min: 1,
+        max: 5,
+      },
+    },
+  ],
 });
 
 // Export the Food model

@@ -23,4 +23,6 @@ router.get('/profile', async (req, res) => {
         res.redirect('/'); 
     }
 });
+
+
 module.exports = router;

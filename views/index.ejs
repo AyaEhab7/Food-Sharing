@@ -11,13 +11,17 @@
     <%- include('./partials/_navbar.ejs') %>
     <div class="app-description">
       <h1>Welcome to the Food Sharing App!</h1>
-      <p>Got extra food? Share it with your neighbors and help reduce waste!<br> Join our community to easily give away.
-         let’s fight food waste together
-      </p>
-      <p>
-        Sign up and turn your surplus food into someone's next meal </p>
-      <a href="/auth/sign-up" class="cta-button">Get Started!</a>
+      <p>Got extra food? Share it with your neighbors and help reduce waste!
+        <br> OR Join our community to easily give away.</p>
+      
+      <% if(user) { %>
+        <h2>Let’s Fight Food Waste Together</h2>      
+      <% } else { %>
+        <h2>Sign Up And Turn Your Surplus Food Into Someone's Next Meal </h2>
+        <a href="/auth/sign-up" class="cta-button">Get Started!</a> 
+      <% } %>
     </div>
     
   </body>
 </html>
+

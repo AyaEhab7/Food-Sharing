@@ -8,7 +8,7 @@ const foods = require('../models/foods');
 router.get('/', async (req, res) => {
     try {
       const foodItems = await foods.find({}).populate('user_id'); // Populate the user info
-      console.log('Foods Items:', foodItems);
+//      console.log('Foods Items:', foodItems);
       res.render('foods/index.ejs', {
         foodItems,
       });
@@ -34,7 +34,7 @@ router.post('/', async (req, res) => {
 // Show route: Get a specific food item by ID
 router.get('/:foodId', async (req, res) => {
     try {
-      const foodItem = await foods.findById(req.params.foodId).populate('user_id');
+      const foodItem = await foods.findById(req.params.foodId).populate('user_id');     
       res.render('foods/show.ejs', {
         foodItem,
       });
@@ -92,7 +92,28 @@ router.put('/:foodId', async (req, res) => {
   }
 });
 
+// Rate route: Handle rating submissions
+router.post('/:foodId/rate', async (req, res) => {
+  try {
+      const { rating } = req.body;
+      const foodItem = await foods.findById(req.params.foodId);
 
+      // Check if the user already rated this item
+      const existingRatingIndex = foodItem.ratings.findIndex(r => r.user_id.equals(req.session.user._id));
 
+      if (existingRatingIndex > -1) {
+          // Update existing rating
+          foodItem.ratings[existingRatingIndex].rating = rating;
+      } else {
+          // Add new rating
+          foodItem.ratings.push({ user_id: req.session.user._id, rating });
+      }
 
+      await foodItem.save();
+      res.redirect(`/foods/${foodItem._id}`); // Redirect to the food item's show page
+  } catch (error) {
+      console.error(error);
+      res.redirect('/');
+  }
+});
 module.exports = router;
