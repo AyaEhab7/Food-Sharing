@@ -7,7 +7,7 @@ const foods = require('../models/foods');
 // Index route: Get all foods items
 router.get('/', async (req, res) => {
     try {
-      const foodItems = await foods.find({}).populate('user_id', 'username'); // Populate the user info
+      const foodItems = await foods.find({}).populate('user_id'); // Populate the user info
       console.log('Foods Items:', foodItems);
       res.render('foods/index.ejs', {
         foodItems,
@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-http://localhost:3000/foods/new
+//http://localhost:3000/foods/new
 // New route: Render form to create a new foods item
 router.get('/new', (req, res) => {
     res.render('foods/new.ejs');
@@ -28,8 +28,40 @@ router.get('/new', (req, res) => {
 router.post('/', async (req, res) => {
     req.body.user_id = req.session.user._id; // Set the user ID from session
     await foods.create(req.body);
-    res.redirect('/foods'); // Redirect to the food index
+    res.redirect('/'); // Redirect to the food index
   });
+
+// Show route: Get a specific food item by ID
+router.get('/:foodId', async (req, res) => {
+    try {
+      const foodItem = await foods.findById(req.params.foodId).populate('user_id');
+      res.render('foods/show.ejs', {
+        foodItem,
+      });
+    } catch (error) {
+      console.error(error);
+      res.redirect('/');
+    }
+  });  
+
+  // DELETE route: Remove a food item
+router.delete('/:foodId', async (req, res) => {
+  try {
+      const foodItem = await foods.findById(req.params.foodId);
+      
+      // Check if the user is the owner of the food item
+      if (foodItem.user_id.equals(req.session.user._id)) {
+          await foodItem.deleteOne();
+          res.redirect('/foods'); // Redirect to the index page
+      } else {
+          res.send("You don't have permission to delete this item.");
+      }
+  } catch (error) {
+      console.error(error);
+      res.redirect('/');
+  }
+});
+
 
 
 module.exports = router;

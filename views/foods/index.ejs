@@ -9,6 +9,31 @@
     <%- include('../partials/_navbar.ejs') %>
     <h1>Here's all the Foods Sharing</h1>
     <a href="/foods/new">Add a New Foods</a>
-
+    <ul>
+      <% foodItems.forEach(foodItem => { %>
+          <li>
+              <h2><%= foodItem.name %></h2>
+              <p><strong>Expiration Date:</strong> <%= new Date(foodItem.expiration_date).toLocaleDateString() %></p>
+              <p><strong>Pickup Location:</strong> <%= foodItem.location %></p>
+              <p><strong>Description:</strong> <%= foodItem.description %></p>
+              <!-- User ID Check -->
+              <% if (user && foodItem.user_id._id.equals(user._id)) { %>
+                  <p><strong>You Shared this!</strong></p>
+                  <form action="/foods/<%= foodItem._id %>?_method=DELETE" method="POST" style="display:inline;">
+                    <button type="submit">Delete</button>
+                  </form> 
+                  <form action="/foods/<%= foodItem._id %>?_method=edit" method="GET" style="display:inline;">
+                    <button type="submit">Edit</button>
+                  </form> 
+                    <% } else { %>
+                  <p><strong>Shared By:</strong><%= foodItem.user_id.username %> </p>                          
+              <% } %>
+          
+            </li>
+      <% }) %>
+  </ul>
+  <% if (foodItems.length === 0) { %>
+      <p>No food items available. Please add some!</p>
+  <% } %>
   </body>
 </html>
