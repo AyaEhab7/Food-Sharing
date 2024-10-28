@@ -28,7 +28,7 @@ router.get('/new', (req, res) => {
 router.post('/', async (req, res) => {
     req.body.user_id = req.session.user._id; // Set the user ID from session
     await foods.create(req.body);
-    res.redirect('/'); // Redirect to the food index
+    res.redirect('/foods'); // Redirect to the food index
   });
 
 // Show route: Get a specific food item by ID
@@ -61,6 +61,37 @@ router.delete('/:foodId', async (req, res) => {
       res.redirect('/');
   }
 });
+
+// EDIT route: Render form to edit a food item
+router.get('/:foodId/edit', async (req, res) => {
+  try {
+      const foodItem = await foods.findById(req.params.foodId);
+      res.render('foods/edit.ejs', { 
+        foodItem 
+      });
+
+  } catch (error) {
+      console.error(error);
+      res.redirect('/foods');
+  }
+});
+
+// UPDATE route: Handle the edit form submission
+router.put('/:foodId', async (req, res) => {
+  try {
+      const foodItem = await foods.findById(req.params.foodId);
+      if (foodItem.user_id.equals(req.session.user._id)) {
+          await foodItem.updateOne(req.body);
+          res.redirect('/foods');
+      } else {
+          res.send("You don't have permission to update this item.");
+      }
+  } catch (error) {
+      console.error(error);
+      res.redirect('/foods');
+  }
+});
+
 
 
 

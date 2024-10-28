@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Food Item</title>
+</head>
+<body>
+    <h1>Edit Food Item</h1>
+    <form action="/foods/<%= foodItem._id %>?_method=PUT" method="POST">
+        <label for="name">Food Name:</label>
+        <input type="text" id="name" name="name" value="<%= foodItem.name %>" required>
+        
+        <label for="expiration_date">Expiration Date:</label>
+        <input type="datetime-local" id="expiration_date" name="expiration_date" value="<%= new Date(foodItem.expiration_date).toISOString().slice(0, 16) %>" required>
+        
+        <label for="location">Pickup Location:</label>
+        <input type="text" id="location" name="location" value="<%= foodItem.location %>" required>
+        
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" required><%= foodItem.description %></textarea>
+
+        <button type="submit">Update Food Item</button>
+        <button type="submit">Cancel</button>
+
+    </form>
+</body>
+</html>

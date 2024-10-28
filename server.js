@@ -10,6 +10,7 @@ require('./config/database');
 // Controllers
 const authController = require('./controllers/auth');
 const foodController = require('./controllers/foods');
+const usersController = require('./controllers/users.js');
 
 const isSignedIn = require('./middleware/isSignedIn');
 
@@ -47,6 +48,8 @@ app.get('/', (req, res) => {
 
 app.use('/auth', authController);
 app.use('/foods', foodController);
+app.use('/users', isSignedIn, usersController);
+
 
 
 // Protected Routes

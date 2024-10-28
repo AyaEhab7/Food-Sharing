@@ -22,8 +22,8 @@
                   <form action="/foods/<%= foodItem._id %>?_method=DELETE" method="POST" style="display:inline;">
                     <button type="submit">Delete</button>
                   </form> 
-                  <form action="/foods/<%= foodItem._id %>?_method=edit" method="GET" style="display:inline;">
-                    <button type="submit">Edit</button>
+                  <form action="/foods/<%= foodItem._id %>/edit" method="GET" style="display:inline;">
+                    <button type="submit">Edit</button> 
                   </form> 
                     <% } else { %>
                   <p><strong>Shared By:</strong><%= foodItem.user_id.username %> </p>                          

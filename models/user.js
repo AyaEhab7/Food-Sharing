@@ -10,6 +10,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  sharedFoodItems: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'FoodItem', // Reference to FoodItem model
+  }],  
 });
 
 module.exports = mongoose.model('User', userSchema);
