@@ -116,4 +116,19 @@ router.post('/:foodId/rate', async (req, res) => {
       res.redirect('/');
   }
 });
+
+// DELETE route: Remove a rating
+router.delete('/:foodId/rate/:ratingId', async (req, res) => {
+  try {
+      const foodItem = await foods.findById(req.params.foodId);
+      foodItem.ratings = foodItem.ratings.filter(r => !r._id.equals(req.params.ratingId)); // Remove the rating
+      await foodItem.save();
+      res.redirect(`/foods/${foodItem._id}`); // Redirect to the food item's show page
+  } catch (error) {
+      console.error(error);
+      res.redirect('/');
+  }
+});
+
+
 module.exports = router;

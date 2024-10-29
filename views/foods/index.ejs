@@ -28,9 +28,27 @@
                   <% } else { %>
                     <p><strong>Shared By:</strong> <%= foodItem.user_id.username %></p>
                 
-                    <!-- Form to submit rating -->
-                  <form action="/foods/<%= foodItem._id %>/rate" method="POST">
-                    <label for="rating">Rate this food item:</label>
+           <!-- Check if user has rated this food item -->
+           <% const userRating = foodItem.ratings.find(r => r.user_id.equals(user._id)); %>
+           <% if (userRating) { %>
+               <p><strong>Rating:</strong> <%= userRating.rating %></p>
+               <form action="/foods/<%= foodItem._id %>/rate" method="POST" style="display:inline;">
+                   <label for="rating">Update Rating:</label>
+                   <select name="rating" id="rating">
+                       <option value="1" <%= userRating.rating === 1 ? 'selected' : '' %>>1</option>
+                       <option value="2" <%= userRating.rating === 2 ? 'selected' : '' %>>2</option>
+                       <option value="3" <%= userRating.rating === 3 ? 'selected' : '' %>>3</option>
+                       <option value="4" <%= userRating.rating === 4 ? 'selected' : '' %>>4</option>
+                       <option value="5" <%= userRating.rating === 5 ? 'selected' : '' %>>5</option>
+                   </select>
+                   <button type="submit">Update</button>
+               </form>
+               <form action="/foods/<%= foodItem._id %>/rate" method="POST" style="display:inline;">
+                   <button type="submit">Delete Rating</button>
+               </form>
+           <% } else { %>
+               <form action="/foods/<%= foodItem._id %>/rate" method="POST">
+                   <label for="rating">Rate this food item:</label>
                    <select name="rating" id="rating" required>
                        <option value="">Select a rating</option>
                        <option value="1">1</option>
@@ -38,9 +56,10 @@
                        <option value="3">3</option>
                        <option value="4">4</option>
                        <option value="5">5</option>
-                       </select>
-                    <button type="submit">Submit Rating</button>
-                    </form>                
+                   </select>
+                   <button type="submit">Submit Rating</button>
+               </form>
+                  <% } %>           
                 <% } %>
                 <form action="/foods/<%= foodItem._id %>" method="GET" style="display:inline;">
                   <button type="submit">see the rating</button>
@@ -48,8 +67,5 @@
             </li>
         <% }) %>
     </ul>
-    <% if (foodItems.length === 0) { %>
-        <p>No food items available. Please add some!</p>
-    <% } %>
 </body>
 </html>

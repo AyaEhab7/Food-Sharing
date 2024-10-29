@@ -16,13 +16,16 @@
     <p><strong>Description:</strong> <%= foodItem.description %></p>
     <p><strong>Shared By:</strong> <%= foodItem.user_id.username %></p>
 
-        <!-- Display average rating -->
-        <p><strong>Average Rating:</strong> 
-            <%= foodItem.ratings.length > 0 
-                ? (foodItem.ratings.reduce((acc, r) => acc + r.rating, 0) / foodItem.ratings.length).toFixed(1) 
-                : 'No ratings yet' %>
-        </p>
+    <!-- Display average rating -->
+    <p><strong>Average Rating:</strong> 
+    <%= foodItem.ratings.length > 0 
+    ? (foodItem.ratings.reduce((acc, r) =>
+     acc + r.rating, 0) / foodItem.ratings.length).toFixed(1) 
+         : 'No ratings yet' %>
+    </p>
 
-    <a href="/foods">Back to Food List</a>
+    <a href="/foods">Back To Food List</a>
+    <a href="/users/profile">Back To Profile</a>
+
 </body>
 </html>
