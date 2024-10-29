@@ -13,7 +13,7 @@ router.get('/profile', async (req, res) => {
         // Find food items created by the logged-in user
         const foodItems = await foods.find({}).populate('user_id');
 
-        console.log('My Food Items:', foodItems);
+        //console.log('My Food Items:', foodItems);
         res.render('profile.ejs', {
             user: req.session.user,
             foodItems, // Pass the user's food items to the view
