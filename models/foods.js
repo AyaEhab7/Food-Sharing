@@ -10,6 +10,8 @@ const ratingSchema = new mongoose.Schema({
     min: 1, 
     max: 5 
   } // Ensure rating is between 1 and 5
+}, {
+  timestamps:true
 });
 
 const foodSchema = new mongoose.Schema({
@@ -38,6 +40,8 @@ const foodSchema = new mongoose.Schema({
   },
   ratings: [ratingSchema], // Store user ratings
 
+},{
+  timestamps: true
 });
 
 // Export the Food model

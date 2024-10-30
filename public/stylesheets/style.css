@@ -9,7 +9,6 @@ body {
     width: 100vw;
     background-color: #e6dad5;
     text-align: center;
-
   }
 
 .landing-header {
@@ -35,11 +34,11 @@ body {
     background-image: url('https://i.imgur.com/XVHnJP9.png');
     width: 70px;
     background-repeat: no-repeat;
+    background-position: center;
     background-size: contain;
     margin: 2px;
 
   }
-  
   .landing-image {
     background-image: url(./assets/delicious-food-arrangement-top-view.jpg);
     height: 100%;
@@ -58,7 +57,6 @@ body {
     padding: 10px 25px;
     border-radius: 10px;
     text-decoration: none;
-    margin: 0 10px;
 
   }
   
@@ -175,3 +173,150 @@ button:hover {
     z-index: -10;
     left: -10px;
   }
+
+  .index-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+  }
+  
+  .index-header > h1 {
+    color: #9a1e1e;
+    font-size: 1.5em;
+  }
+  
+  .index-header > a {
+    padding: 6px 12px;
+    border: 1px solid #9a1e1e;
+    text-decoration: none;
+    color: #9a1e1e;
+  }
+  
+  .index-header > a:hover {
+    background-color: #9a1e1e;
+    color: white;
+  }
+  
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .card-container > a {
+    padding: 5px 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    margin: 5px 30px 50px;
+    color: black;
+  }
+  
+  
+a > h4 {
+  font-weight: normal;
+  font-size: 1em;
+} 
+ 
+  .new-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+  }
+  
+  .new-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border: 1px solid gray;
+    padding: 10px 40px;
+  }
+  
+  .new-form-container > h1 {
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: 1.6em;
+  }
+  
+  .new-form-container > form {
+    display: flex;
+    flex-direction: column;
+      
+  }
+  
+  .new-form-container > form > input {
+    width: 38em;
+    
+  }
+  
+  .new-form-container > form > button {
+    margin-bottom: 20px;
+  }
+
+  .show-page-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px 50px;
+    height: 100%;
+    max-width: 100%;
+  }
+    
+  .show-info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: 80%;
+    
+  }
+  
+  .show-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 75%;
+    
+  }
+  
+  .show-header > h1 {
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: 1.8em;
+  }
+  
+  .show-header > h3 {
+    font-weight: normal;
+    font-size: 1.6em;
+
+  }
+  
+  .show-details-container {
+    border: 1px solid #bd1a1a;
+    padding: 20px 30px;
+    width: 100%;
+    margin: 10px 0;
+  }
+  
+  .show-details-container > h3 {
+    font-weight: normal;
+    font-size: 1em;
+  }
+  
+  .show-details-container > p {
+    font-size: 1em;
+  }
+
+:any-link{
+color: #9a1e1e;  
+  
+}

@@ -8,10 +8,14 @@
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
-
-    <h1>Food Item Details</h1>
+    <div class="show-page-container">
+        <div class="show-info-container">
+          <div class="show-header">
     
-    <h2><%= foodItem.name %></h2>
+            <div class="show-details-container">   
+            <h1>Food Sharing Details</h1>
+            <h2><%= foodItem.name %></h2>
+    
     <p><strong>Expiration Date:</strong> <%= new Date(foodItem.expiration_date).toLocaleDateString() %></p>
     <p><strong>Pickup Location:</strong> <%= foodItem.location %></p>
     <p><strong>Description:</strong> <%= foodItem.description %></p>
@@ -26,5 +30,9 @@
     </p>
 
     <a href="/foods">Back To Food List</a>
+</div>
+</div>
+</div>
+</div>
 </body>
 </html>

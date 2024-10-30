@@ -8,7 +8,8 @@
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
-
+    <div class="new-container">
+    <div class="new-form-container">
     <h1>Add A New Food To Sharing With ALL</h1>
     <form action="/foods" method="POST"> 
         <!-- Adjust the action based on your route setup -->
@@ -25,6 +26,8 @@
         <input type="text" id="location" name="location" required>
 
         <button type="submit">Share This Food</button> <!-- Submit button -->
+    </div>
+    </div>    
     </form>
     <a href="/foods">Back to Food List</a>
 </body>
