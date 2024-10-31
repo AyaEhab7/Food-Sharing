@@ -14,6 +14,9 @@ The Food Sharing App allows users to share surplus food items, Our mission is to
 - [Deployed App Link](https://food-sharing-project-d4d381d5ecad.herokuapp.com/
 )
 - [Planning Materials](/plan/plan)
+## ERD 
+![Screenshot](./plan/ERD.PNG) 
+
 
 ## Attributions: 
 - **Images**: Icons and images sourced from [Freepik](https://www.freepik.com).
