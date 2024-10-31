@@ -6,12 +6,14 @@
 
 ## Your app's name:
 Food Sharing App
- 
+- https://food-sharing-project-d4d381d5ecad.herokuapp.com/
+
+## Idea Description:
 The Food Sharing App allows users to share surplus food items, Our mission is to reduce food waste while fostering community spirit. Whether you have extra food or you're looking for something to enjoy, this app makes it easy to share and find food before it expires. Join us in making a difference, one meal at a time!
  
 
 ## Getting Started
-- [Deployed App Link](https://food-sharing-project-d4d381d5ecad.herokuapp.com/
+- [Deployed App Link](https://food-sharing-project-d4d381d5ecad.herokuapp.com/ 
 )
 - [Planning Materials](/plan/plan)
 ## ERD 
