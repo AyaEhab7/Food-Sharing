@@ -5,10 +5,12 @@ body {
     font-family: 'Montserrat', sans-serif;
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    width: 100vw;
+    height: 105vh;
+    width: 100%;
     background-color: #e6dad5;
     text-align: center;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+
   }
 
 .landing-header {
@@ -26,30 +28,31 @@ body {
   }
   
   .logo-container > h1 {
-    margin: 15px;
+    margin: 10px;
     font-size: 30px;
   }
   
   .foodsSharing-icon {
     background-image: url('https://i.imgur.com/XVHnJP9.png');
-    width: 70px;
+    width: 60px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    margin: 2px;
 
   }
   .landing-image {
     background-image: url(./assets/delicious-food-arrangement-top-view.jpg);
     height: 100%;
+    width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
-    margin: 0 0 0 -8px;
+    margin: 0 -4px 0 -4px ;
   }
   
   .auth-links,
   .nav-links {
-    margin: 20px 50px;
+    margin: 20px 10px;
+    
   }
   
   .auth-links > a {
@@ -83,6 +86,8 @@ body {
     margin: 0 10px;
     font-weight: bold;
     color: rgb(175, 46, 29);
+    margin-bottom: 10px; /* Adjust button margin */
+
   }
   
   .nav-links > a:hover {
@@ -319,4 +324,118 @@ a > h4 {
 :any-link{
 color: #9a1e1e;  
   
+}
+
+
+
+@media (max-width: 768px) {
+  body{
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+ 
+  }
+  .landing-header {
+      flex-direction: column;
+      align-items: center;
+  
+  }
+
+  .logo-container {
+      width: 100%;
+      justify-content: center;
+  }
+
+  .auth-links,
+  .nav-links {
+      margin: 10px 0;
+  }
+
+  .signup-page,
+  .signin-page {
+      flex-direction: column;
+      height: auto;
+  }
+
+  .signup-form-container-1,
+  .signin-form-container-1 {
+      width: 100%;
+      flex-direction: column;
+  }
+
+  .signup-form-container-2,
+  .signin-form-container-2 {
+      width: 90%;
+  }
+
+  input {
+      width: 100%;
+  }
+
+  .signup-img, .signin-img {
+      width: 100%;
+      min-height: 62vh;
+      left: 0;
+  }
+
+  .card-container > a {
+      margin: 5px 0;
+  }
+
+  .new-form-container {
+      padding: 10px 20px;
+      width: 90%;
+  }
+
+  .show-page-container {
+      flex-direction: column;
+      padding: 20px 10px;
+  }
+
+  .show-header {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .show-info-container {
+      width: 100%;
+  }
+
+  .new-container { 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto; /* Adjust height to fit content */
+}
+
+.new-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 0.1px solid rgb(151, 126, 126);
+    padding: 30px 20px; /* Reduced padding for smaller screens */
+    width: 70%; /* Make the form container responsive */
+    margin: 30px;
+}
+
+.new-form-container > h1 {
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: 1.4em; /* Slightly smaller font size */
+}
+
+.new-form-container > form {
+    display: flex;
+    flex-direction: column;
+}
+
+.new-form-container > form > input {
+    width: 100%; /* Full width for inputs */
+    margin-bottom: 10px; /* Space between inputs */
+}
+
+.new-form-container > form > button {
+    margin-bottom: 10px; /* Adjust button margin */
+    width: 100%; /* Full width for buttons */
+}  
+
 }
