@@ -28,7 +28,7 @@ body {
   }
   
   .logo-container > h1 {
-    margin: 10px;
+    margin: 20px;
     font-size: 30px;
   }
   
@@ -51,6 +51,7 @@ body {
   
   .auth-links,
   .nav-links {
+    display: flex;
     margin: 20px 10px;
     
   }
@@ -60,6 +61,8 @@ body {
     padding: 10px 25px;
     border-radius: 10px;
     text-decoration: none;
+    margin: 0 10px;
+
 
   }
   
@@ -86,7 +89,6 @@ body {
     margin: 0 10px;
     font-weight: bold;
     color: rgb(175, 46, 29);
-    margin-bottom: 10px; /* Adjust button margin */
 
   }
   
@@ -340,15 +342,23 @@ color: #9a1e1e;
   }
 
   .logo-container {
-      width: 100%;
-      justify-content: center;
-  }
+    width: 100%; /* Full width of the container */
+    display: flex; /* Use flexbox to layout children */
+    margin: 5px 0; /* Optional: Add space above and below */
+}
 
+.logo-container > h1 {
+    margin: 5px; /* Reset margin to avoid extra spacing */
+    font-size: 25px; /* Keep the font size */
+}
   .auth-links,
   .nav-links {
-      margin: 10px 0;
+      margin: 0 0 0 4px;
   }
 
+  .auth-links{
+    display: flex; /* Allows for flexbox layout */
+  }
   .signup-page,
   .signin-page {
       flex-direction: column;
@@ -363,7 +373,7 @@ color: #9a1e1e;
 
   .signup-form-container-2,
   .signin-form-container-2 {
-      width: 90%;
+      width: 70%;
   }
 
   input {
